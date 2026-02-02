@@ -1,0 +1,53 @@
+{
+  "nome": "Vale Refeição",
+  "valor": 550.00
+}
+
+{
+  "nome": "Vale Transporte",
+  "descricao": "Benefício para deslocamento diário",
+  "valor": 220.50,
+  "ativo": true
+}
+
+{
+  "nome": "Auxílio Creche",
+  "descricao": "Benefício temporariamente suspenso",
+  "valor": 800.00,
+  "ativo": false
+}
+
+{
+  "nome": "Plano de Saúde Premium",
+  "descricao": "Plano executivo",
+  "valor": 2500.99
+}
+
+{
+  "nome": "   Vale Cultura   ",
+  "valor": 120.00
+}
+
+// Inválido: nome vazio
+{
+  "nome": "",
+  "valor": 300.00
+}
+
+// Inválido: valor negativo
+{
+  "nome": "Vale Alimentação",
+  "valor": -100.00
+}
+
+// Inválido: campo obrigatório ausente (valor)
+{
+  "nome": "Seguro de Vida"
+}
+
+// Inválido: benefício duplicado (unicidade)
+{
+  "nome": "Vale Refeição",
+  "valor": 500.00
+}
+

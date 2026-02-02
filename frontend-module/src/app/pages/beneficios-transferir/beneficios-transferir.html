@@ -1,0 +1,74 @@
+<div class="main-container">
+  <h1>Transferência de Benefícios</h1>
+
+  <form (ngSubmit)="transferir()" class="form-beneficio">
+
+    <div class="form-grupo">
+      <label>Benefício Origem</label>
+
+      <select [(ngModel)]="origemId" name="origem">
+        <option value="">Selecione</option>
+        <option *ngFor="let b of beneficios" [value]="b.id">
+          {{ b.nome }}
+        </option>
+      </select>
+
+      <div class="erro" *ngIf="tentouSalvar && origemId === ''">
+        Selecione o benefício de origem.
+      </div>
+    </div>
+
+    <div class="form-grupo">
+      <label>Benefício Destino</label>
+
+      <select [(ngModel)]="destinoId" name="destino">
+        <option value="">Selecione</option>
+        <option *ngFor="let b of beneficios" [value]="b.id">
+          {{ b.nome }}
+        </option>
+      </select>
+
+      <div class="erro" *ngIf="tentouSalvar && destinoId === ''">
+        Selecione o benefício de destino.
+      </div>
+
+      <div
+        class="erro"
+        *ngIf="tentouSalvar && origemId !== '' && origemId === destinoId"
+      >
+        Origem e destino não podem ser iguais.
+      </div>
+    </div>
+
+    <div class="form-grupo">
+      <label>Valor</label>
+
+      <input
+        type="number"
+        min="0.01"
+        step="0.01"
+        [(ngModel)]="valor"
+        name="valor"
+      />
+
+      <div class="erro" *ngIf="tentouSalvar && (!valor || valor <= 0)">
+        Informe um valor maior que zero.
+      </div>
+    </div>
+
+    <div class="erro" *ngFor="let msg of mensagensErro">
+      {{ msg }}
+    </div>
+
+    <div class="form-acoes">
+      <button type="submit" class="btn-primario" [disabled]="salvando">
+        {{ salvando ? 'Transferindo...' : 'Transferir' }}
+      </button>
+
+      <button type="button" class="btn-secundario" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+
+  </form>
+</div>

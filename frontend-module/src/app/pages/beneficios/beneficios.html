@@ -1,0 +1,49 @@
+<div class="main-container">
+  <h1>Benefícios</h1>
+
+  <a routerLink="/beneficios/novo" class="btn-primario">
+    Novo Benefício
+  </a>
+  <a routerLink="/beneficios/transferir" class="btn-transferir">
+  Transferir
+</a>
+
+  <div *ngIf="carregando()" class="loading">
+    Carregando benefícios...
+  </div>
+
+  <table class="tabela" *ngIf="!carregando()">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (b of beneficios(); track b.id) {
+        <tr>
+          <td>{{ b.nome }}</td>
+          <td>{{ b.descricao }}</td>
+          <td class="acoes">
+            <button
+              class="btn-primario"
+              (click)="editar(b.id!)"
+            >
+              Editar
+            </button>
+
+            <button
+              class="btn-secundario"
+              (click)="excluir(b.id!)"
+              [disabled]="excluindo() === b.id"
+            >
+              {{ excluindo() === b.id ? 'Excluindo...' : 'Excluir' }}
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

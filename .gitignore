@@ -1,0 +1,16 @@
+# Maven
+target/
+
+# Node
+node_modules/
+.angular/
+
+# IDE
+.idea/
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store

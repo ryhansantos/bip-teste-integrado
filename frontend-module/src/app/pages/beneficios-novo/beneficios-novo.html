@@ -1,0 +1,111 @@
+<div class="main-container">
+
+  <h1>
+    {{ isEdicao() ? 'Editar Benefício' : 'Novo Benefício' }}
+  </h1>
+
+  <form (ngSubmit)="salvar()" class="form-beneficio">
+
+    <!-- Nome -->
+    <div class="form-grupo">
+      <label for="nome">Nome</label>
+      <input
+        id="nome"
+        type="text"
+        [value]="nome()"
+        (input)="nome.set($any($event.target).value)"
+      />
+
+      <!-- Erro frontend -->
+      <div class="erro" *ngIf="tentouSalvar() && nome().trim().length === 0">
+        O nome é obrigatório.
+      </div>
+
+      <!-- Erro backend -->
+      <div class="erro" *ngIf="errosBackend()['nome']">
+        {{ errosBackend()['nome'] }}
+      </div>
+    </div>
+
+    <!-- Descrição -->
+    <div class="form-grupo">
+      <label for="descricao">Descrição</label>
+      <input
+        id="descricao"
+        type="text"
+        [value]="descricao()"
+        (input)="descricao.set($any($event.target).value)"
+      />
+
+      <div class="erro" *ngIf="errosBackend()['descricao']">
+        {{ errosBackend()['descricao'] }}
+      </div>
+    </div>
+
+    <!-- Valor -->
+    <div class="form-grupo">
+      <label for="valor">Valor</label>
+      <input
+        id="valor"
+        type="number"
+        min="0"
+        step="0.01"
+        [value]="valor() ?? ''"
+        (input)="
+          valor.set(
+            $any($event.target).value === ''
+              ? null
+              : $any($event.target).valueAsNumber
+          )
+        "
+      />
+
+      <!-- Erro frontend -->
+      <div class="erro" *ngIf="tentouSalvar() && valorInvalido()">
+        O valor deve ser maior ou igual a zero.
+      </div>
+
+      <!-- Erro backend -->
+      <div class="erro" *ngIf="errosBackend()['valor']">
+        {{ errosBackend()['valor'] }}
+      </div>
+    </div>
+
+    <!-- Ativo (somente edição) -->
+    <div class="form-grupo" *ngIf="isEdicao()">
+      <label>
+        <input
+          type="checkbox"
+          [checked]="ativo()"
+          (change)="ativo.set($any($event.target).checked)"
+        />
+        Ativo
+      </label>
+
+      <div class="erro" *ngIf="errosBackend()['ativo']">
+        {{ errosBackend()['ativo'] }}
+      </div>
+    </div>
+
+    <!-- Ações -->
+    <div class="form-acoes">
+      <button
+        type="submit"
+        class="btn-primario"
+        [disabled]="salvando()"
+      >
+        {{ salvando() ? 'Salvando...' : 'Salvar' }}
+      </button>
+
+      <button
+        type="button"
+        class="btn-secundario"
+        (click)="cancelar()"
+        [disabled]="salvando()"
+      >
+        Cancelar
+      </button>
+    </div>
+
+  </form>
+</div>

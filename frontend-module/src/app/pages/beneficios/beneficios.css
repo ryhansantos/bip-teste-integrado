@@ -1,0 +1,42 @@
+.tabela {
+  width: 100%;
+  margin-top: 24px;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.tabela th,
+.tabela td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.tabela th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.tabela tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.acoes button {
+  margin-right: 8px;
+}
+
+.acoes {
+  display: flex;
+  justify-content: center;   /* centro horizontal */
+  align-items: center;       /* centro vertical */
+  gap: 8px;                  /* espaço entre botões */
+}
+
+.tabela th {
+  text-align: center;
+}
+
+.tabela td {
+  text-align: center;
+}

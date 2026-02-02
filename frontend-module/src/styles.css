@@ -1,0 +1,133 @@
+:root {
+  --cor-primaria: #0b2c5f;   
+  --cor-secundaria: #0e3b81;
+  --cor-fundo: #f4f6f8;
+  --cor-texto: #2e2e2e;
+  --cor-link: #0e3b81;
+  --cor-link-hover: #06449c;
+  --cor-vermelho: #b91c1c;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+.main-container {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 24px;
+}
+
+
+.header {
+  width: 100%;
+  background-color: var(--cor-primaria); 
+  border-bottom: none;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 52px;
+}
+
+.menu {
+  display: flex;
+  gap: 24px;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.menu a:hover {
+  color: #000;
+}
+
+.menu a.ativo {
+  border-bottom-color: #000;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.btn-primario,
+.btn-secundario {
+  box-sizing: border-box;
+  padding: 8px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 140px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.btn-primario {
+  background-color: var(--cor-primaria);
+  color: #fff;
+  border: 1px solid var(--cor-primaria);
+}
+
+.btn-primario:hover {
+  opacity: 0.9;
+}
+
+.btn-secundario {
+  background-color: #ffffff;
+  color: var(--cor-vermelho);
+  border: 1px solid var(--cor-vermelho);
+}
+
+.btn-secundario:hover {
+  background-color: #fee2e2;
+}
+
+button {
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button + button {
+  margin-left: 8px;
+}
+
+.btn-transferir {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-left: 12px;
+
+  background-color: #6f42c1; 
+  color: #fff;
+  text-decoration: none;
+
+  border-radius: 4px;
+  font-weight: 500;
+
+  transition: background-color 0.2s ease;
+}
+
+.btn-transferir:hover {
+  background-color: #59339d;
+}
